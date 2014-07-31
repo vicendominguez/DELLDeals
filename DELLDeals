@@ -1,12 +1,9 @@
 #!/usr/bin/env casperjs
 
-# npm -g install phantomjs
-# npm -g install casperjs
-# Reminder: PATH_NODE pointed to the correct node modules location please
-
-
 /**
- * 
+ npm -g install phantomjs
+ npm -g install casperjs
+ Reminder: PATH_NODE pointed to the correct node modules location please 
  */
 var casper = require('casper').create();
 
