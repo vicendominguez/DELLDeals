@@ -17,16 +17,16 @@ npm -g install casperjs
 
 Reminder: PATH_NODE to the correct node modules location
 
-```chmod 755 DELLPrices```
+```chmod 755 DELLDeals```
 
 ### Usage
 
 If you deployed in your $PATH:
-``DELLPrices``
+``DELLDeals``
 
 If not: 
 
-``./DELLPrices``
+``./DELLDeals``
 
 ### Output
 
