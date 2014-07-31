@@ -30,7 +30,7 @@ If not:
 
 ### Output
 
-``
+```
 Solicitando informacion a DELL....
 Servidores para rack Dell PowerEdge | Dell España
 Modelos: 15
@@ -94,4 +94,4 @@ Servidor para rack PowerEdge R920 | Dell España
 	Precio: undefined
 	Oferta web: 22.176€
 	Oferta Valida: 2014-08-07
-``
+```
