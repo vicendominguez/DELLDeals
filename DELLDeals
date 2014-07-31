@@ -1,0 +1,76 @@
+#!/usr/bin/env casperjs
+
+# npm -g install phantomjs
+# npm -g install casperjs
+# Reminder: PATH_NODE pointed to the correct node modules location please
+
+
+/**
+ * 
+ */
+var casper = require('casper').create();
+
+var dellLinks = [];
+
+function getValidDate () {
+	var offerDate = document.querySelectorAll('meta[itemprop*="priceValidUntil"]');
+	return Array.prototype.map.call(offerDate, function(e) {
+        // Return all of these content
+        return e.getAttribute('content');
+	});
+}
+
+function getServersURL () {
+	var serverList = document.querySelectorAll('li.parentLink a');
+	return Array.prototype.map.call(serverList, function(e) {
+        // Return all of these content
+        return e.getAttribute('href');
+	});
+}
+
+function getInitialMoney() {
+    var prices = document.querySelectorAll('li.startText span.pAmt');
+    return Array.prototype.map.call(prices, function(e) {
+        // Return all of these content
+        return e.textContent;
+    });
+}
+
+function getFinalMoney() {
+    var prices = document.querySelectorAll('li.finalPr span.pAmt');
+    return Array.prototype.map.call(prices, function(e) {
+        // Return all of these content
+        return e.textContent;
+    });
+}
+
+casper.start('http://www.dell.com/es/empresas/p/poweredge-rack-servers?~ck=bt');
+casper.userAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X)');
+
+casper.then(function() {
+    this.echo(this.getTitle());
+	dellLinks = dellLinks.concat(this.evaluate(getServersURL));
+	console.log ("Modelos: " + dellLinks.length);
+	this.each (dellLinks, function(casper, link) {
+		link="http://www.dell.com" + link;
+		this.thenOpen(link,function() {
+			this.echo(this.getTitle());
+		});
+		
+		this.then(function (){
+			// var price_o = new String(this.evaluate(getInitialMoney));
+			//var price_o = JSON.stringify(this.evaluate(getInitialMoney));
+			var price_o = this.evaluate(getInitialMoney)[0] + " ";
+			var price_f = this.evaluate(getFinalMoney)[0] + " ";
+			var ValidDate = this.evaluate(getValidDate)[0] + " ";
+			price_o = price_o.replace(/\s/g,'');
+			price_f = price_f.replace(/\s/g,'');
+			console.log ("\tPrecio: "+ price_o);
+			console.log ("\tOferta web: "+ price_f);
+			console.log ("\tOferta Valida: "+ ValidDate);
+		});
+	});
+});
+
+console.log("Solicitando informacion a DELL....");
+casper.run();
