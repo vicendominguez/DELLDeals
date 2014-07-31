@@ -1,6 +1,6 @@
-# DELLprices
+# DELLDeals
 
-Proof of concept for scrapping webs with nodejs + casperjs.
+Proof of concept for fast scrapping web with nodejs + casperjs.
 The spanish Dell webpage is too slow. It is very crazy surf that web.
 This is a shell script with nodejs to get spanish super-deals of Dell rack servers directly.
 
@@ -23,7 +23,7 @@ Reminder: PATH_NODE to the correct node modules location
 
 If you deployed in your $PATH:
 
-```DELLPrices```
+``DELLPrices``
 
 If not: 
 
