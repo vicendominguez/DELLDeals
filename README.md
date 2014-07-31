@@ -22,7 +22,6 @@ Reminder: PATH_NODE to the correct node modules location
 ### Usage
 
 If you deployed in your $PATH:
-
 ``DELLPrices``
 
 If not: 
@@ -95,4 +94,4 @@ Servidor para rack PowerEdge R920 | Dell España
 	Precio: undefined
 	Oferta web: 22.176€
 	Oferta Valida: 2014-08-07
-```
+``
